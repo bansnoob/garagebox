@@ -11,10 +11,6 @@ jobs:
       - run:
           name: Cloning Git Repository
           command: git clone --branch developp git@github.com:bansnoob/garagebox.git /home/circleci/garagebox
-      
-      - run:
-          name: Change Permissions
-          command: sudo 
 
       - run:
           name: Adding domain to know hosts
