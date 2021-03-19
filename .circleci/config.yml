@@ -14,13 +14,13 @@ jobs:
 #          name: Installing sshpass
 #          command: sudo apt-get install sshpass
 
-#      - run:
-#          name: Adding domain to know hosts
-#          command: ssh-keyscan -H 54.193.238.27 >> ~/.ssh/known_hosts
+      - run:
+          name: Adding domain to know hosts
+          command: ssh-keyscan -H 3.142.166.23 >> ~/.ssh/known_hosts
 
-#      - run:
-#          name: Moving to Beta
-#          command: sshpass -p $GB_PASS rsync -rlOtvz -e ssh /home/circleci/lmHObWgcHzmFMaAO/ $GB_USER@54.193.238.27:/var/www/html/lmHObWgcHzmFMaAO/
+      - run:
+          name: Moving to Beta
+          command: rsync -rlOtvz -e ssh /home/circleci/garagebox/ $GB_USER@3.142.166.23:/var/www/html/
 
 workflows:
   version: 2
