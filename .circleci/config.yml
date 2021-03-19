@@ -6,6 +6,8 @@ jobs:
       - image: circleci/php:7.4-cli-node-browsers
     steps:
       - checkout
+      - run: sudo apt update
+      - run: sudo apt-get install rsync
       - run:
           name: Cloning Git Repository
           command: git clone git@github.com:bansnoob/garagebox.git /home/circleci/garagebox
