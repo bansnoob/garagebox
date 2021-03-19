@@ -1,21 +1,33 @@
-version: 2.1
+version: 2
 
-orbs:
-  aws-ecr: circleci/aws-ecr@6.2.0
-  aws-ecs: circleci/aws-ecs@0.0.11
+jobs:
+  build_dev:
+    docker:
+      - image: circleci/php:5.6-cli-node-browsers
+    steps:
+      - checkout
+      - run:
+          name: Cloning Git Repository
+          command: git clone git@github.com:bansnoob/garagebox.git /home/circleci/garagebox
+
+#      - run:
+#          name: Installing sshpass
+#          command: sudo apt-get install sshpass
+
+#      - run:
+#          name: Adding domain to know hosts
+#          command: ssh-keyscan -H 54.193.238.27 >> ~/.ssh/known_hosts
+
+#      - run:
+#          name: Moving to Beta
+#          command: sshpass -p $GB_PASS rsync -rlOtvz -e ssh /home/circleci/lmHObWgcHzmFMaAO/ $GB_USER@54.193.238.27:/var/www/html/lmHObWgcHzmFMaAO/
 
 workflows:
-# Log into AWS, build and push image to Amazon ECR
-  build_and_push_image:
+  version: 2
+  build_flow:
     jobs:
-      - aws-ecr/build-and-push-image:
-          account-url: AWS_ECR_ACCOUNT_URL
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          create-repo: true
-          # AWS_REGION_ENV_VAR_NAME
-          region: AWS_DEFAULT_REGION
-          # myECRRepository
-          repo: '${MY_APP_PREFIX}'
-          # myECRRepoTag
-          tag: "$CIRCLE_SHA1"
+      - build_dev:
+          filters:
+            branches:
+              only: develop
+          context: cred    
