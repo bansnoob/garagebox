@@ -18,10 +18,6 @@ jobs:
           name: Adding domain to know hosts
           command: ssh-keyscan -H 3.142.166.23 >> ~/.ssh/known_hosts
 
-      - add_shh_keys:
-          fingerprints:
-            - "29:1a:31:90:bb:cd:c5:aa:4b:73:a2:6d:d9:f8:99:24"
-
       - run:
           name: Moving to Beta
           command: rsync -rlOtvz -e 'ssh -v' /home/circleci/garagebox/ $GB_USER@3.142.166.23:/var/www/html/
