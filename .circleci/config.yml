@@ -20,7 +20,7 @@ jobs:
 
       - run:
           name: Moving to Beta
-          command: rsync -rlOtvz -e 'ssh -v' /home/circleci/garagebox/ $GB_USER@3.142.166.23:/var/www/html/
+          command: rsync -rlOtvz -e 'ssh -o StrictHostKeyChecking=no' /home/circleci/garagebox/ $GB_USER@3.142.166.23:/var/www/html/
 
 workflows:
   version: 2
