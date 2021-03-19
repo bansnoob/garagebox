@@ -10,11 +10,7 @@ jobs:
       - run: sudo apt-get install rsync
       - run:
           name: Cloning Git Repository
-          command: git clone git@github.com:bansnoob/garagebox.git /home/circleci/garagebox
-
-#      - run:
-#          name: Installing sshpass
-#          command: sudo apt-get install sshpass
+          command: git clone --branch developp git@github.com:bansnoob/garagebox.git /home/circleci/garagebox
 
       - run:
           name: Adding domain to know hosts
@@ -22,13 +18,36 @@ jobs:
 
       - run:
           name: Moving to Beta
-          command: rsync -azv --checksum --delete --rsync-path "sudo rsync" -e 'ssh -o StrictHostKeyChecking=no'  /home/circleci/garagebox/ $GB_USER@3.142.166.23:/var/www/html/
+          command: rsync -azv --rsync-path "sudo rsync" -e 'ssh -o StrictHostKeyChecking=no'  /home/circleci/garagebox/ $GB_USER@3.142.166.23:/var/www/html/
+
+  build_prod:
+    docker:
+      - image: circleci/php:7.4-cli-node-browsers
+    steps:
+      - checkout
+      - run: sudo apt update
+      - run: sudo apt-get install rsync
+      - run:
+          name: Cloning Git Repository
+          command: git clone git@github.com:bansnoob/garagebox.git /home/circleci/garagebox
+
+      - run:
+          name: Adding domain to know hosts
+          command: ssh-keyscan -H 18.191.214.53 >> ~/.ssh/known_hosts
+
+      - run:
+          name: Moving to Beta
+          command: rsync -azv --rsync-path "sudo rsync" -e 'ssh -o StrictHostKeyChecking=no'  /home/circleci/garagebox/ $GB_USER@18.191.214.53:/var/www/html/
 
 workflows:
   version: 2
   build_flow:
     jobs:
       - build_dev:
+          filters:
+            branches:
+              only: developp
+      - build_prod:
           filters:
             branches:
               only: main
