@@ -14,9 +14,9 @@ jobs:
 #          name: Installing sshpass
 #          command: sudo apt-get install sshpass
 
-      - run:
-          name: Adding domain to know hosts
-          command: ssh-keyscan -H 3.142.166.23 >> ~/.ssh/known_hosts
+#      - run:
+#          name: Adding domain to know hosts
+#          command: ssh-keyscan -H 3.142.166.23 >> ~/.ssh/known_hosts
 
       - run:
           name: Moving to Beta
