@@ -31,4 +31,4 @@ workflows:
       - build_dev:
           filters:
             branches:
-              only: developp
+              only: main
