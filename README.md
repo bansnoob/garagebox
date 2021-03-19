@@ -1,3 +1,1 @@
-Test App
-
-Application url (http://lmhobwgchzmfmaao.garageboxfitness.com/)
+Laravel Test App
