@@ -5,11 +5,11 @@ jobs:
     docker:
       - image: circleci/php:5.6-cli-node-browsers
     steps:
+      - checkout
       - add_shh_keys:
           fingerprints:
             - "29:1a:31:90:bb:cd:c5:aa:4b:73:a2:6d:d9:f8:99:24"
-
-      - checkout
+            
       - run:
           name: Cloning Git Repository
           command: git clone git@github.com:bansnoob/garagebox.git /home/circleci/garagebox
