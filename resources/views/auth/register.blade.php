@@ -4,7 +4,7 @@
                 <div class="flex">
                     <!-- Navigation Links -->
                     <div class="flex mx-auto">
-                        <img width="100" class="img" src="img/white_gb_words_logo_bg_black.png">
+                        <img width="100" class="img" src="{{ \App\Helpers\appHelper::instance()->getImage('white_gb_words_logo_bg_black.png') }}">
                     </div>
                 </div>
             </div>
