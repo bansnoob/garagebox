@@ -1,1 +1,1 @@
-<img src="img/GARAGE BOX LOGO - black circle white words.png" alt="">
+<img src="{{ \App\Helpers\appHelper::instance()->getImage('GARAGE BOX LOGO - black circle white words.png') }}" alt="">

@@ -8,7 +8,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center bg-white justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out">
-                            <img style="height: 30px; width: 30px;" class="img" src="img/profile_icon_workout.png">
+                            <img style="height: 30px; width: 30px;" class="img" src="{{ \App\Helpers\appHelper::instance()->getImage('profile_icon_workout.png') }}">
                         </button>
                     </x-slot>
 
@@ -30,14 +30,14 @@
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden px-3">
                 <button @click="open = ! open" class="inline-flex items-center bg-white justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out">
-                    <img style="height: 30px; width: 30px;" class="img" src="img/profile_icon_workout.png">
+                    <img style="height: 30px; width: 30px;" class="img" src="{{ \App\Helpers\appHelper::instance()->getImage('profile_icon_workout.png') }}">
                 </button>
             </div>
 
             <div class="flex">
                 <!-- Navigation Links -->
                 <div class="flex mx-auto">
-                    <img width="100" class="img" src="img/white_gb_words_logo_bg_black.png">
+                    <img width="100" class="img" src="{{ \App\Helpers\appHelper::instance()->getImage('white_gb_words_logo_bg_black.png') }}">
                 </div>
             </div>
         </div>
